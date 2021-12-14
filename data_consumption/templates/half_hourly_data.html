@@ -1,0 +1,35 @@
+<html>
+<head>
+    <style>
+    table, th, td {
+  border: 1px solid black;
+}
+   </style>
+</head>
+<body>
+{% if half_hourly_data.queryset %}
+<h3><a href="/meter/{{half_hourly_data.meter_id}}/show-chart/"> Plot Graph.</a></h3>
+{% endif %}
+<table border>
+    <thead>
+    <tr><th>S.N</th>
+        <th>Consumption</th>
+        <th>Reading Date</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% if half_hourly_data %}
+    {% for half_hourly in half_hourly_data.queryset %}
+    <tr><td>{{ forloop.counter }}</td>
+        <td>{{ half_hourly.consumption }}</td>
+        <td>{{ half_hourly.reading_date_time }}</td>
+        </td>
+    </tr>
+    <!-- end for and if -->
+    {% endfor %}
+    {% endif %}
+    </tbody>
+</table>
+</body>
+</html>

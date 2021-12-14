@@ -1,0 +1,37 @@
+<html>
+<head>
+    <style>
+    table, th, td {
+  border: 1px solid black;
+}
+
+    </style>
+</head>
+<body>
+<table border>
+    <thead>
+    <tr>
+        <th>S.N</th>
+        <th>Building ID</th>
+        <th>Name</th>
+        <th>Meters Info.</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% if buildings %}
+    {% for building in buildings %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ building.id }}</td>
+        <td>{{ building.name }}</td>
+        <td><a href="/buildings/{{building.id}}/meters/">Meters</a>
+        </td>
+    </tr>
+    <!-- end for and if -->
+    {% endfor %}
+    {% endif %}
+    </tbody>
+</table>
+</body>
+</html>
